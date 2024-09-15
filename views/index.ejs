@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Upload with QR Code</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="flex-column align-items-center m-auto">
+            <h1>Upload an image and generate a QR code</h1>
+
+            <form action="/upload" method="POST" enctype="multipart/form-data">
+                <input type="file" class="button" name="image" accept="image/*" required>
+                <button type="submit" class="button">Upload</button>
+            </form>
+            <% if (imageUrl && qrCodeDataUrl) { %>
+                <div class="flex-row" style="gap: 20px;">
+                    <div class="flex-column">
+                        <h2>Uploaded Image:</h2>
+                        <img src="<%= imageUrl %>" alt="Uploaded Image" style="width: auto; height: auto;">
+                    </div>
+                    <div class="flex-column">
+                        <h2>QR Code:</h2>
+                        <img src="<%= qrCodeDataUrl %>" alt="QR Code" style="width: 300px; height: auto;">
+                    </div>
+                </div>
+                <% } %>
+        </div>
+    </div>
+</body>
+
+</html>
